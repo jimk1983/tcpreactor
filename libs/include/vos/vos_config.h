@@ -64,6 +64,7 @@
 #include <math.h>
 
 #elif VOS_PLAT_LINUX
+#include <sys/time.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -80,7 +81,6 @@
 #include <string.h>
 #include <stdarg.h>
 #include <errno.h>
-#include <time.h>
 #include <time.h>
 #include <pthread.h>
 #include <math.h>

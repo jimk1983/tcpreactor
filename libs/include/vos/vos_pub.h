@@ -32,11 +32,10 @@
 #include <vos_mem.h>
 #include <vos_hash.h>
 #include <vos_route.h>
-#include <vos_sys.h>
 #include <vos_log.h>
+#include <vos_sys.h>
 #include <vos_mid.h>
 #include <vos_file.h>
-#include <vos_log.h>
 #include <vos_ent.h>
 #include <vos_pevt.h>
 #include <vos_mpools.h>

@@ -26,8 +26,8 @@ function pdt_lib_compile
        echo "make $1"
 	rctfmake $1
 	
-	#cp 	$ROOTDIR/output/bin/vos/libvos.a $ROOTDIR/archpform/lib/
-	#rm -rf $ROOTDIR/output/bin/vos/* 
+	cp 	$ROOTDIR/output/bin/librct.a $ROOTDIR/../LinuxUpServer/libs/bin
+	echo "copy librct.a compeleted!"
 }
 
 pdt_lib_compile librct
