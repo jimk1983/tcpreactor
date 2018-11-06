@@ -62,6 +62,7 @@ typedef enum
 typedef enum
 {
     RCT_SUBTYPE_SSL_SWM=0,
+    RCT_SUBTYPE_SSL_UPF,
     RCT_SUBTYPE_SSL_NEM,
     RCT_SUBTYPE_SSL_PFM,
     RCT_SUBTYPE_SSL_TCM,

@@ -274,7 +274,7 @@ LONG RCT_API_MgtLockySend(ULONG ulSrcSubType, ULONG ulDstRctType, ULONG ulDstSub
 
 /*****************************************************************************
  函 数 名  : RCT_API_MgtNormalSend
- 功能描述  : 普通的一次性消息，不需要返回数据的,一般用与转发包
+ 功能描述  : 普通的一次性消息，不需要返回数据的,一般用于转发包
  输入参数  : ULONG ulSrcSubType   
            ULONG ulDstRctType   
            ULONG ulDstSubType   

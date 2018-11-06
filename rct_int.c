@@ -20,7 +20,7 @@
 #include <vos_pub.h>
 #include <rct_pub.h>
 
-
+#if 0
 /*静态线程配置: 规定创建多少线程*/
 /*确保和类型保持一一对应*/
 RCT_INICONF_S g_stRctPthIniConfig[]=
@@ -66,7 +66,54 @@ RCT_INICONF_S g_stRctPthIniConfig[]=
         "Manage Plane: [VSNAT]",      /*Tap的SNAT业务*/
     },
 };
+#else
+/* 文件升级服务器的配置: 就创建2种类型 */
+RCT_INICONF_S g_stRctPthIniConfig[]=
+{
+    {
+        RCT_TYPE_MP_CLI,
+        0,          
+        "Manage Plane: [Command]",  /*命令行*/
+    },
+    {
+        RCT_TYPE_MP_AAA,
+        0,          
+        "Manage Plane: [AAA]",      /*认证授权*/
+    },
+    {
+        RCT_TYPE_MP_PROXY,
+        0,          
+        "Manage Plane: [PROXY]",      /*代理模块:DNS/ARP*/
+    },
+    {
+        RCT_TYPE_DP_TCP,
+        1,          
+        "Data Plane: [TCP]",        /*TCP监听*/
+    },
+    {
+        RCT_TYPE_DP_SSL,
+        2,          
+        "Data Plane: [SSL]",        /*SSL业务*/
+    },
+    {
+        RCT_TYPE_DP_UDPS,
+        0,          
+        "Data Plane: [UDPS]",       /*UDPS业务*/
+    },
+    {
+        RCT_TYPE_DP_TWORK,
+        0,          
+        "Manage Plane: [TWOK]",      /*定时任务业务: 例如DNS\ARP查询等*/
+    },
+    {
+        RCT_TYPE_DP_VSNAT,
+        0,          
+        "Manage Plane: [VSNAT]",      /*Tap的SNAT业务*/
+    },
+};
 
+
+#endif
 /*****************************************************************************
  函 数 名  : RCT_InitPthCfgGetSubNums
  功能描述  : 获取子线程的配置

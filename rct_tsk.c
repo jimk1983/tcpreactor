@@ -534,15 +534,14 @@ LONG RCT_TaskPthCfgCtxInit()
 
     /*任务初始化*/
     VOS_Mem_Zero((CHAR *)g_pstPthMapCfgCtx, sizeof(RCT_PTHCTX_INFO_S));
-
 	
-    for(ulIndex = 0; ulIndex <RCT_PTHMAXNUMS; ulIndex++ )
+    for( ulIndex = 0; ulIndex < RCT_PTHMAXNUMS; ulIndex++ )
     {
         g_pstPthMapCfgCtx->pstPthCfgCtx[ulIndex]  = NULL;
     }
 
     /*初始化一下另外一个业务注册函数数组*/
-    for(ulIndex =0; ulIndex<RCT_TYPE_NUMS; ulIndex++ )
+    for(ulIndex =0; ulIndex < RCT_TYPE_NUMS; ulIndex++ )
     {
         for(ulSubTypeIndex=0;ulSubTypeIndex<RCT_SUBTYPE_MAXNUMS;ulSubTypeIndex++ )
         {
