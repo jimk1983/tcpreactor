@@ -273,7 +273,7 @@ LONG RCT_InitPthreadBaseTimer()
 {
     LONG     lRet = 0;
     
-    /*默认为500ms定时器最小粒度*/
+    /*默认为500ms定时器最小回收粒度*/
     lRet = VOS_Thread_Create(NULL, RCT_InitPthreadBaseTimerCycle, NULL, 0,0);
     if ( 0 == lRet )
     {
