@@ -73,6 +73,8 @@
 #include <sys/ipc.h>
 #include <sys/epoll.h>
 #include <sys/eventfd.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 
 #include <fcntl.h>
 #include <unistd.h>

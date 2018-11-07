@@ -39,4 +39,5 @@
 #include <vos_ent.h>
 #include <vos_pevt.h>
 #include <vos_mpools.h>
+#include <vos_shm.h>
 
