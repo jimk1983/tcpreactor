@@ -38,6 +38,8 @@ CHAR *VOS_StrCpy_S(CHAR *pcDst, ULONG ulMaxLen, CHAR *pcSrc);
 
 CHAR *VOS_StrNCpy_S(CHAR *pcDst, ULONG ulMaxLen,CHAR *pcSrc, ULONG ulLen);
 
+CHAR *VOS_StrCat(CHAR *dest, const CHAR *src);
+
 CHAR *VOS_Strrchr(const CHAR *pcString, const CHAR chEndChr);
 
 CHAR *VOS_Strchr(const CHAR *pcString, const CHAR chStartChr);

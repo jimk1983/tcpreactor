@@ -15,22 +15,25 @@
     作    者   : jimk
     修改内容   : 创建文件
 
-******************************************************************************/
+****************************************************/
 
 /*目前业务就定义了2K,4K,8K,16K，可以扩展*/
-#define VOS_MEM_32_NUM           5000
-#define VOS_MEM_64_NUM           5000
-#define VOS_MEM_128_NUM          5000
-#define VOS_MEM_256_NUM          5000
-#define VOS_MEM_512_NUM          5000
-#define VOS_MEM_1K_NUM           5000
-#define VOS_MEM_2K_NUM           5000
-#define VOS_MEM_4K_NUM           5000
-#define VOS_MEM_8K_NUM           2000
-#define VOS_MEM_16K_NUM          5000
-#define VOS_MEM_32K_NUM          1000
-#define VOS_MEM_64K_NUM          200
-#define VOS_MEM_128K_NUM         200
+#define VOS_MEM_CONNNUM          1500
+
+#define VOS_MEM_32_NUM           VOS_MEM_CONNNUM
+#define VOS_MEM_64_NUM           VOS_MEM_CONNNUM
+#define VOS_MEM_128_NUM          VOS_MEM_CONNNUM
+#define VOS_MEM_256_NUM          VOS_MEM_CONNNUM
+#define VOS_MEM_512_NUM          VOS_MEM_CONNNUM
+#define VOS_MEM_1K_NUM           VOS_MEM_CONNNUM
+#define VOS_MEM_2K_NUM           10                 /*当前业务上不会用到*/
+#define VOS_MEM_4K_NUM           10                 /*当前业务上不会用到*/
+#define VOS_MEM_8K_NUM           10                 /*当前业务上不会用到*/
+#define VOS_MEM_16K_NUM          10000               /*业务的形式以16K的为主, 每个用户最大20个缓存能力, 最多200个并发*/
+#define VOS_MEM_32K_NUM          10               
+#define VOS_MEM_64K_NUM          10
+#define VOS_MEM_128K_NUM         10
+
 
 
 #define VOS_CHAR_SIZE                   sizeof(CHAR) 

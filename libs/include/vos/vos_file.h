@@ -28,9 +28,11 @@ typedef struct tagVosDirsFilesInfo VOS_DIRS_FILESINFO_S;
 struct tagVosDirsFilesInfo{
     VOS_DIRS_FILESINFO_S *next;    
 
-    CHAR    acFileName[VOS_FILENAME_LEN + 1];          /*文件名称*/
-    INT32   uiFileSize;                                                  /*文件大小*/
+    CHAR    acFileName[VOS_FILENAME_LEN + 1];           /*文件名称*/
+    INT32   uiFileSize;                                 /*文件大小*/
 };
+
+LONG VOS_DirGetCurrentPath(CHAR *pcDirPath, INT32 iMaxLen);
 
 LONG VOS_DirIsExist(const CHAR *pcDirPath);
 
