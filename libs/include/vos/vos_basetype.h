@@ -20,6 +20,11 @@
 #define _VOS_BASETYPE_H_
 
 
+#ifndef POINTER
+typedef unsigned char *POINTER;
+#endif
+
+
 /*char 表示无符号的整数, Unicode码占2个字节*/
 #ifndef CHAR
 typedef char    CHAR;
@@ -33,6 +38,12 @@ typedef signed char   BYTE;
 #ifndef SHORT
 typedef short   SHORT;
 #endif
+
+#ifndef USHORT
+typedef unsigned short  USHORT;
+#endif
+       
+
        
 #ifndef LONG
 typedef long     LONG;

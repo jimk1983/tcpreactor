@@ -33,7 +33,7 @@
 CHAR *VOS_Memory(ULONG ulSize);
 
 /*内存清零*/
-VOID VOS_Mem_Zero(CHAR *pcBuf, ULONG ulSize);
+VOID VOS_Mem_Zero(VOID *pcBuf, ULONG ulSize);
 
 /*内存安全释放*/
 VOID VOS_MemFree(CHAR *ucPtr);
