@@ -29,36 +29,34 @@
 #define VOS_MEM_2K_NUM           10                 /*当前业务上不会用到*/
 #define VOS_MEM_4K_NUM           10                 /*当前业务上不会用到*/
 #define VOS_MEM_8K_NUM           10                 /*当前业务上不会用到*/
-#define VOS_MEM_16K_NUM          10000               /*业务的形式以16K的为主, 每个用户最大20个缓存能力, 最多200个并发*/
+#define VOS_MEM_16K_NUM          10000              /*业务的形式以16K的为主, 每个用户最大20个缓存能力, 最多200个并发*/
 #define VOS_MEM_32K_NUM          10               
 #define VOS_MEM_64K_NUM          10
 #define VOS_MEM_128K_NUM         10
 
+#define VOS_CHAR_SIZE            sizeof(CHAR) 
 
+#define VOS_FILEPATH_MAXLEN      256
 
-#define VOS_CHAR_SIZE                   sizeof(CHAR) 
-
-#define VOS_FILEPATH_MAXLEN       256
-
-#define VOS_MEM_FREED       0
+#define VOS_MEM_FREED        0
 #define VOS_MEM_USED         1
 
 INT32 VOS_MemMgmt_Init();
 
-VOID VOS_MemMgmt_UnInit();
+VOID  VOS_MemMgmt_UnInit();
 
 CHAR *VOS_MemCreate_X(ULONG ulMid, ULONG ulBufSize, CHAR *pcFileName, ULONG ulLine);
 
-VOID VOS_MemFree_X(CHAR *pcMemBuf);
+VOID  VOS_MemFree_X(CHAR *pcMemBuf);
 
 #define VOS_Malloc(ulMid, ulSize)  VOS_MemCreate_X(ulMid, ulSize,__FILE__,__LINE__)
 
 #define VOS_Free(pcMemBuf)    VOS_MemFree_X(pcMemBuf)
 
-VOID VOS_MM_MidTypeShow(UINT32 uiType,  UINT32 uiMid);
+VOID  VOS_MM_MidTypeShow(UINT32 uiType,  UINT32 uiMid);
 
-VOID VOS_MM_TypeShow(UINT32 uiType);
+VOID  VOS_MM_TypeShow(UINT32 uiType);
 
-VOID VOS_MM_Show();
+VOID  VOS_MM_Show();
 
 

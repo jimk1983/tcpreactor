@@ -53,6 +53,7 @@ typedef struct tagLinuxRWLock
 {
     pthread_mutex_t     stMutex;
     pthread_cond_t      stCond;
+    UINT32              uiStatus;
 }LINUX_RW_LOCK_S;
 typedef LINUX_RW_LOCK_S VOS_RW_LOCK_S;
 #elif VOS_PLAT_WIN
@@ -60,6 +61,7 @@ typedef struct tagWinRWLock
 {
     CRITICAL_SECTION stMutex;
     INT32            stCond;
+    UINT32              uiStatus;
 }WIN_RW_LOCK_S;
 typedef WIN_RW_LOCK_S VOS_RW_LOCK_S;
 #endif
@@ -75,25 +77,26 @@ typedef WIN_RW_LOCK_S VOS_RW_LOCK_S;
 #define VOS_RWLOCK_FREE(_rwlock)    VOS_ThreadMutex_Destroy(&(_rwlock))
 
 /*加锁*/
-#define VOS_RWLOCK_LOCK(_rwLock)    VOS_ThreadMutex_Lock(&(_rwLock))
+#define VOS_RWLOCK_LOCK(_rwLock)    VOS_ThreadMutex_RWLock(&(_rwLock))
 
 /*解锁*/
-#define VOS_RWLOCK_UNLOCK(_rwLock)    VOS_ThreadMutex_UnLock(&(_rwLock))
+#define VOS_RWLOCK_UNLOCK(_rwLock)    VOS_ThreadMutex_RWUnLock(&(_rwLock))
 
 /*加锁*/
-#define VOS_RWLOCK_PLOCK(_prwLock)    VOS_ThreadMutex_Lock(_prwLock)
+#define VOS_RWLOCK_PLOCK(_prwLock)    VOS_ThreadMutex_RWLock(_prwLock)
 
 /*解锁*/
-#define VOS_RWLOCK_UNPLOCK(_prwLock)    VOS_ThreadMutex_UnLock(_prwLock)
+#define VOS_RWLOCK_UNPLOCK(_prwLock)    VOS_ThreadMutex_RWUnLock(_prwLock)
 
 
 INT32 VOS_ThreadMutex_Init(VOS_RW_LOCK_S *pstMutex);
 
-INT32 VOS_ThreadMutex_Lock(VOS_RW_LOCK_S *pstMutex);
+INT32 VOS_ThreadMutex_RWLock(VOS_RW_LOCK_S *pstMutex);
 
-INT32 VOS_ThreadMutex_UnLock(VOS_RW_LOCK_S *pstMutex);
+INT32 VOS_ThreadMutex_RWUnLock(VOS_RW_LOCK_S *pstMutex);
 
 INT32 VOS_ThreadMutex_Destroy(VOS_RW_LOCK_S *pstMutex);
+
 
 
 INT32 VOS_SM_Init(VOS_SM_T *pstSem);

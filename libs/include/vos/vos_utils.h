@@ -80,9 +80,9 @@ BOOL VOS_CpuIsBigEndian();
 
 ULONG VOS_GetSelfPId();
 
-
 UINT32 VOS_atoi(CHAR *pcStr);
-UINT32 VOS_itoa(CHAR *pcStr, UINT32 iVal);
+VOID VOS_itoa(CHAR *pcStr, UINT32 iVal);
+VOID  VOS_hextoa(CHAR *pcStr, CHAR iVal);
 
 USHORT VOS_Random16();
 UINT32  VOS_Random32();

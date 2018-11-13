@@ -24,7 +24,7 @@
 
 VOID VOS_Printf(CHAR *pcformat,...);
 
-INT32 VOS_Snprintf(CHAR *pcbuf, UINT32 ulMaxLen, CHAR *pcformat,...);
+INT32 VOS_Snprintf(UCHAR *pcbuf, UINT32 ulMaxLen, CHAR *pcformat,...);
 
 INT32 VOS_StrCmp(CHAR *pcString1,CHAR *pcString2);
 
