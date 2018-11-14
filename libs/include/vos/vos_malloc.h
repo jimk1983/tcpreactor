@@ -42,7 +42,7 @@ VOID VOS_MemFree(CHAR *ucPtr);
 VOID VOS_Mem_Copy(CHAR *pcDst, CHAR *pcSrc,ULONG ulSize);
 
 /*内存安全拷贝*/
-VOID VOS_Mem_Copy_S(CHAR *pcDst, ULONG ulMaxLen, CHAR *pcSrc,ULONG ulSize);
+VOID VOS_Mem_Copy_S(VOID *pcDst, ULONG ulMaxLen, VOID *pcSrc,ULONG ulSize);
 
 /*内存比较*/
 LONG VOS_MemCmp(CHAR *pcMem1, CHAR *pcMem2, UINT32 uiSize);
