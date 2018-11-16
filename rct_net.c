@@ -173,6 +173,8 @@ LONG RCT_Net_EventOptsUnRegister(RCT_EVTREACTOR_S *pstRctReactor, RCT_REACTOR_NE
     else
     {
         DbgRctModuleEvent("RTM_EPOLL_Ctl unregister the net event OK!!");
+        
+        VOS_Printf("RTM_EPOLL_Ctl unregister the net event OK! Del Epoll fd=%d", pstEvtOps->lSockfd);
     }
     
     return VOS_OK;
@@ -182,11 +184,20 @@ LONG RCT_Net_EventOptsUnRegister(RCT_EVTREACTOR_S *pstRctReactor, RCT_REACTOR_NE
 LONG RCT_Net_EventEpollMaskModify(RCT_EVTREACTOR_S *pstRctReactor, ULONG ulOption, LONG lSockfd, ULONG *pulEvtMask)
 {
     ULONG ulEpollMask = 0;
+    RCT_REACTOR_NETEVTHANDLER_S *pstNetEvtHandler = NULL;
 
     if( NULL == pstRctReactor || VOS_SOCKET_INVALID == lSockfd )
     {
         DbgRctModuleError("param error!");
         return VOS_ERR;
+    }
+        
+    pstNetEvtHandler = &pstRctReactor->stNetEvtHandler;
+
+    /*添加去注册保护, 一旦已经去注册，所有的事件已经失效了 */
+    if ( NULL == pstNetEvtHandler->apstEpollEvtOps[lSockfd] )
+    {
+        return VOS_OK;
     }
 
     ulEpollMask = (*pulEvtMask);
