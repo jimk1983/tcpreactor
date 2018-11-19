@@ -45,7 +45,7 @@ INT32 VOS_MemMgmt_Init();
 
 VOID  VOS_MemMgmt_UnInit();
 
-CHAR *VOS_MemCreate_X(ULONG ulMid, ULONG ulBufSize, CHAR *pcFileName, ULONG ulLine);
+CHAR *VOS_MemCreate_X(ULONG ulMid, INT32 ulBufSize, CHAR *pcFileName, INT32 ulLine);
 
 VOID  VOS_MemFree_X(CHAR *pcMemBuf);
 
