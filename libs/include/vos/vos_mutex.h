@@ -54,6 +54,7 @@ typedef struct tagLinuxRWLock
     pthread_mutex_t     stMutex;
     pthread_cond_t      stCond;
     UINT32              uiStatus;
+    volatile UINT32  uiLockFlag;
 }LINUX_RW_LOCK_S;
 typedef LINUX_RW_LOCK_S VOS_RW_LOCK_S;
 #elif VOS_PLAT_WIN
@@ -62,11 +63,46 @@ typedef struct tagWinRWLock
     CRITICAL_SECTION stMutex;
     INT32            stCond;
     UINT32              uiStatus;
+    volatile UINT32  uiLockFlag;
 }WIN_RW_LOCK_S;
 typedef WIN_RW_LOCK_S VOS_RW_LOCK_S;
 #endif
 
 
+
+#if VOS_PLAT_LINUX
+#define __xchg_op(x, ptr) \
+    ({ \
+    \
+    __typeof(*(ptr)) __ret = (x); \
+    switch (sizeof(*(ptr))) { \
+\
+    case 1:      \
+    asm volatile("xchgb %b0,%1\n"   \
+    : "+q" (__ret), "+m" (*(ptr))   \
+    ::"memory", "cc");  \
+    break;  \
+    case 2: \
+    asm volatile("xchgw %w0,%1\n"   \
+    : "+r" (__ret), "+m" (*(ptr))   \
+    :: "memory", "cc");      \
+    break;  \
+    case 4:     \
+    asm volatile("xchgl %k0,%1\n"   \
+    : "+r" (__ret), "+m" (*(ptr))   \
+    ::"memory", "cc");  \
+    break;  \
+    case 8:      \
+    asm volatile("xchgq %0,%1\n"    \
+     : "+r" (__ret), "+m" (*(ptr))  \
+    ::"memory", "cc");  \
+    break;  \
+}   \
+__ret;  \
+})
+
+#define xchg(ptr,v) __xchg_op((v), (ptr))
+#endif
 
 
 
