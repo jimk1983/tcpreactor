@@ -118,7 +118,7 @@ LONG    RCT_TaskArryBizMsgHandlerRunCall(RCT_MQUENODE_S *pstMessage);
 
 /************************************************************************************/
 
-VOID RCT_Task_Main(VOID *pstRctInfo);
+VOID *RCT_Task_Main(VOID *pstRctInfo);
 
 LONG RCT_Task_ReactorCreate(RCT_INICFG_CTX_S *pstRctCfgInfo);
 

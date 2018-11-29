@@ -73,6 +73,6 @@ LONG   VOS_Hash_ULONGKeyGetData(VOS_HASH_TABLE_S *pstHashTbl, ULONG ulKey, VOID 
 LONG   VOS_Hash_StringKeySetData(VOS_HASH_TABLE_S *pstHashTbl, CHAR *pcString, VOID *pvData);
 LONG   VOS_Hash_StringKeyRemove(VOS_HASH_TABLE_S *pstHashTbl, CHAR *pcString);
 
-LONG   VOS_Hash_TablePrime(ULONG ulSize);
+ULONG   VOS_Hash_TablePrime(ULONG ulSize);
 
 

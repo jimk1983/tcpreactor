@@ -72,7 +72,7 @@ VOID RCT_Expire_EventHandlerCb(VOID *pvHandler)
             break;
         }
 
-        pfExpirecb = pstExpireOpsTmp->stExpirecb.pvcbFunc;
+        pfExpirecb = (rtm_reactor_expireops_cb)pstExpireOpsTmp->stExpirecb.pvcbFunc;
 
         /*如果该老化节点已经设置了老化标记，那么执行老化回调*/
         if ( (NULL != (pfExpirecb) ) && (pstExpireOpsTmp->ulExpireConfirm == VOS_TRUE) )

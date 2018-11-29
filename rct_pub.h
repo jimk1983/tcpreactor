@@ -16,6 +16,11 @@
     修改内容   : 创建文件
 
 ******************************************************************************/
+            
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #include <rct_def.h>
 #include <rct_log.h>
@@ -27,5 +32,9 @@
 #include <rct_tsk.h>
 #include <rct_api.h>
 
+        
+#ifdef __cplusplus
+}
+#endif
 
 

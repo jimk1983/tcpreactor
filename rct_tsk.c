@@ -88,29 +88,29 @@ VOID RCT_Task_MainCompeleteWaitfor()
     修改内容   : 新生成函数
 
 *****************************************************************************/
-VOID RCT_Task_Main(VOID *pstRctInfo)
+VOID *RCT_Task_Main(VOID *pstRctInfo)
 {
     LONG                lRet           =    VOS_ERR;
-    RCT_INDEXINFO_S     *pstIndexInfo  =    pstRctInfo;
+    RCT_INDEXINFO_S     *pstIndexInfo  =    (RCT_INDEXINFO_S *)pstRctInfo;
     PRCT_INICFG_CTX_S    pstCfgCtx     =    NULL;
     
     if ( NULL == pstRctInfo )
     {
         DbgRctModuleError("param error!");
-        return;
+        return NULL;
     }
 
     if ( VOS_ERR == RCT_InitPthCfgCtxCreate(&pstCfgCtx, pstIndexInfo) )
     {
         DbgRctModuleError("param error!");
-        return;
+        return NULL;
     }
     
     /*创建Epoll触发器对象*/
     if ( VOS_ERR == RCT_Task_ReactorCreate(pstCfgCtx) )
     { 
         DbgRctModuleError("RCT_Reactor_Create error!");
-        return;
+        return NULL;
     }
 
     /*将配置保存到全局的记录信息中*/
@@ -118,7 +118,7 @@ VOID RCT_Task_Main(VOID *pstRctInfo)
     {
         DbgRctModuleError("RCT_PthreadTaskInitRun error!");
         (VOID)RCT_Task_ReactorRelease();
-        return;
+        return NULL;
     }
     
     /*线程任务初始化, 注册的业务初始化函数*/
@@ -126,7 +126,7 @@ VOID RCT_Task_Main(VOID *pstRctInfo)
     {
         DbgRctModuleError("RCT_PthreadTaskInitRun error!");
         (VOID)RCT_Task_ReactorRelease();
-        return;
+        return NULL;
     }
     
     DbgRctModuleEvent("Pthread[type=%d] Init OK! Readry to EventWaiting...!");
@@ -147,7 +147,7 @@ VOID RCT_Task_Main(VOID *pstRctInfo)
     DbgRctModuleError("Something wrong!This pthread [type=%d] has error!", g_th_pstReactor->pstPthCfgCtx->stIndexInfo.ulRctType);
     
     (VOID)RCT_Task_ReactorRelease();
-    return;
+    return NULL;
 }
 
 /*****************************************************************************
@@ -812,9 +812,9 @@ INT32 RCT_TaskArrayBizCtxInitRegister(VOS_CALLBACK pfInitCb, VOID *pvArg, ULONG 
         case RCT_TYPE_DP_TWORK:
         case RCT_TYPE_DP_VSNAT:
             /*配置进行赋值操作*/
-            g_stArryRegInfo.stArryBizCtxInitCb[ulRctType][ulRctSubType].stpfInit.pvcbFunc= pfInitCb;
+            g_stArryRegInfo.stArryBizCtxInitCb[ulRctType][ulRctSubType].stpfInit.pvcbFunc= (VOID *)pfInitCb;
             g_stArryRegInfo.stArryBizCtxInitCb[ulRctType][ulRctSubType].stpfInit.pvData  = pvArg;
-            g_stArryRegInfo.stArryBizCtxInitCb[ulRctType][ulRctSubType].pfUnInit         = pfUnInitCb;
+            g_stArryRegInfo.stArryBizCtxInitCb[ulRctType][ulRctSubType].pfUnInit         = (VOS_CALLBACK_UNINIT)pfUnInitCb;
             g_stArryRegInfo.stArryBizCtxInitCb[ulRctType][ulRctSubType].ulRctType        = ulRctType;
             g_stArryRegInfo.stArryBizCtxInitCb[ulRctType][ulRctSubType].ulSubType        = ulRctSubType;
             break;
@@ -887,7 +887,7 @@ INT32 RCT_TaskArrayBizCtxInitUnRegister(ULONG ulRctType,  ULONG ulRctSubType)
     修改内容   : 新生成函数
 
 *****************************************************************************/
-INT32  RCT_TaskArrayBizMsgHandlerRegister(ULONG ulRctType,ULONG ulRctSubType, CHAR *pcModuName, pfComMsgHandlerCallBack pfMsgHandlerCb)
+INT32  RCT_TaskArrayBizMsgHandlerRegister(ULONG ulRctType,ULONG ulRctSubType,   CHAR *pcModuName, pfComMsgHandlerCallBack pfMsgHandlerCb)
 {
     if ( NULL == pfMsgHandlerCb  )
     {

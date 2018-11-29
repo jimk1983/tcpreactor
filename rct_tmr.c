@@ -79,7 +79,7 @@ VOID RCT_Timer_EventHandlerCb(VOID *pvHandler)
         /*该定时器时间戳, 每次都会进行重新计算, 用于和上面的超时时间进行对比*/
         ulTimeStamp = pstTimerOpsTmp->ulTimeStamp;
         
-        pfTimercb     =  pstTimerOpsTmp->stTimercb.pvcbFunc;
+        pfTimercb     =  (rtm_reactor_timerops_cb)pstTimerOpsTmp->stTimercb.pvcbFunc;
         /*一旦时间戳大于超时时间，那么就运行定时器*/
         if ( (NULL != (pfTimercb) ) && (ulTimeStamp >= pstTimerOpsTmp->ulTimerOut))
         {

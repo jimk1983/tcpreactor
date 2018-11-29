@@ -48,7 +48,7 @@ typedef struct tagRctInitConfigCtxInfo
 {   
     RCT_INDEXINFO_S     stIndexInfo;    /*保存的线程索引信息*/
     ULONG               ulEpollWaitNum; /*线程EPOLL监听事件数量*/
-    ULONG               ulEpollId;      /*该事件的EPOLL ID */
+    LONG                ulEpollId;      /*该事件的EPOLL ID */
     
     RCT_COMMUTEINFO_S   stEvtInfo;      /*各种Event信息记录，最后更新到总的映射表， 用于快速查找*/
     
@@ -65,7 +65,7 @@ ULONG   RCT_InitPthCfgGetSubNums(ULONG ulRctType);
 /**************************************************************/
 typedef struct tagRctInitTimerBaseConfig
 {
-    LONG lPthreadNums;                        /*多少个线程*/
+    ULONG lPthreadNums;                       /*多少个线程*/
     LONG aulMapExprEvtfd[RCT_PTHMAXNUMS];     /*需要向线程发送的老化端口*/
     LONG aulMapTimrEvtfd[RCT_PTHMAXNUMS];     /*需要向线程发送的定时器端口*/
 

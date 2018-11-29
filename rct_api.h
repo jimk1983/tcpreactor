@@ -31,7 +31,7 @@ VOID    RCT_API_EnvGetPthConfInfo(  UINT32    *pulRctType, UINT32    *pulSubPthI
 
 ULONG   RCT_API_EnvGetTypeCfgSubNums(ULONG ulRctType);
 
-INT32   RCT_API_MgtHandlerRegister(ULONG ulRctType, ULONG ulSubType, CHAR *pcModuName, pfComMsgHandlerCallBack pfMethod);
+INT32   RCT_API_MgtHandlerRegister(ULONG ulRctType, ULONG ulSubType, const CHAR *pcModuName, pfComMsgHandlerCallBack pfMethod);
 
 VOID    RCT_API_MgtHandlerUnRegister(ULONG ulRctType, ULONG ulSubType);
 

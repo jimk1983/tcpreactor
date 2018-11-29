@@ -60,7 +60,7 @@ LONG    VOS_GetDNSServerIp(VOS_IPADDR_T uiDNSSev[4]);
 
 USHORT  VOS_IPV4Checksum(void *buf, UINT32 size);
 
-CHAR        *VOS_mtoa (const UCHAR *pucMacAddr);
+UCHAR        *VOS_mtoa (UCHAR *pucMacAddr);
 UINT32      VOS_htonl(UINT32 ulHValue);
 UINT32      VOS_ntohl(UINT32 ulHValue);
 USHORT     VOS_htons(USHORT usHValue);

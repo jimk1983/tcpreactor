@@ -202,7 +202,7 @@ VOID RCT_InitPthreadBaseTimerGetMapInfo(RCT_INIT_TIMERBASE_CONFIG_S *pstTimrConf
              (后续可以考虑Ack机制，来进一步完善RCT架构内的定时器机制)
 
 *****************************************************************************/
-VOID RCT_InitPthreadBaseTimerCycle(VOID *pvSleepTime)
+VOID *RCT_InitPthreadBaseTimerCycle(VOID *pvSleepTime)
 {
     LONG    lRet            = 0;
     ULONG   ulIndex         =0;
@@ -254,7 +254,7 @@ VOID RCT_InitPthreadBaseTimerCycle(VOID *pvSleepTime)
 
     DbgRctModuleError("The base Timer pthread has been END!");
     
-    return;
+    return NULL;
 }
 
 

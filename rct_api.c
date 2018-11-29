@@ -354,7 +354,7 @@ LONG RCT_API_MgtSendBack(RCT_MSG_HEAD_S            *pstSrcHead, CHAR *pcData, UL
     修改内容   : 新生成函数
 
 *****************************************************************************/
-INT32 RCT_API_MgtHandlerRegister(ULONG ulRctType, ULONG ulSubType, CHAR *pcModuName, pfComMsgHandlerCallBack pfMethod)
+INT32 RCT_API_MgtHandlerRegister(ULONG ulRctType, ULONG ulSubType, const CHAR *pcModuName, pfComMsgHandlerCallBack pfMethod)
 {
     if ( NULL == pfMethod
         || NULL == pcModuName )
@@ -364,7 +364,7 @@ INT32 RCT_API_MgtHandlerRegister(ULONG ulRctType, ULONG ulSubType, CHAR *pcModuN
     }
 
     /*业务线程注册函数, 内部封装*/
-    if ( VOS_ERR == RCT_TaskArrayBizMsgHandlerRegister(ulRctType, ulSubType, pcModuName, pfMethod) )
+    if ( VOS_ERR == RCT_TaskArrayBizMsgHandlerRegister(ulRctType, ulSubType, (CHAR *)pcModuName, pfMethod) )
     {
         DbgRctModuleError("rct mgt register error");
         return VOS_ERR;

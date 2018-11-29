@@ -27,7 +27,7 @@ typedef pthread_t VOS_THREAD_T;
 typedef HANDLE  VOS_THREAD_T;
 #endif
 
-VOS_THREAD_T VOS_Thread_Create(CHAR *pcName, VOID(* pfvThread)(VOID *arg), VOID *pvArg, INT32 iStacksize, INT32 iPrio);
+VOS_THREAD_T VOS_Thread_Create(CHAR *pcName, VOID *(* pfvThread)(VOID *arg), VOID *pvArg, INT32 iStacksize, INT32 iPrio);
 
 LONG VOS_GetLastError();
 
