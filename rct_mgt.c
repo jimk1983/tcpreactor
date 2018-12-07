@@ -448,7 +448,6 @@ LONG RCT_Reactor_MgtLockySend(ULONG ulSrcSubType, ULONG ulDstRctType, ULONG ulDs
     ULONG               uiVal           = 1;
     LONG                lRet            = 0;
 
-
     /*将准备发送消息，推送到对应的消息队列中*/
     /*根据业务主类型和业务多子线程索引号，来获取通信矩阵信息*/
     if ( VOS_ERR == RCT_TaskPthGetCommunMapInfo(ulDstRctType, ulDstPthIndex, &stDstEvntInfo)  )
@@ -598,7 +597,7 @@ LONG RCT_Reactor_MgtSendBack(RCT_MSG_HEAD_S            *pstHead, CHAR *pcData, U
   //SRC
   pstMgtNode->stHead.ulSrcRctType     = pstHead->ulDstRctType;     /*主类型:CLI\SSL\AAA\...*/
   pstMgtNode->stHead.ulSrcRctSubType  = pstHead->ulDstRctSubType;  /*SSL下的SWM\NEM\TCM等子类型*/
-  pstMgtNode->stHead.ulSrcPthIndex    = pstHead->ulDstPthIndex;   /*SSL多个线程，线程索引*/
+  pstMgtNode->stHead.ulSrcPthIndex    = pstHead->ulDstPthIndex;    /*SSL多个线程，线程索引*/
   
   //DST
   pstMgtNode->stHead.ulDstRctType     = pstHead->ulSrcRctType;
@@ -683,7 +682,7 @@ LONG RCT_Reactor_MessageMainHandler(PRCT_MQUEMGRCTX_S pstQueMgrCtx, RCT_MQUENODE
     }
 
     /*处理消息，调用注册的业务回调函数*/
-    if ( VOS_ERR == RCT_TaskArryBizMsgHandlerRunCall(pstMsgNode) )
+    if ( VOS_ERR == RCT_TaskArrayBizMsgHandlerRunCall(pstMsgNode) )
     {
         DbgRctModuleError("message drop handle!");
         VOS_Free((CHAR *)pstMsgNode->pcMsgData);

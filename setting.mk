@@ -1,10 +1,10 @@
 #公共部分
-#CC=gcc
-CC=g++
+CC=gcc
+#CC=g++
 CFLAGS=-c 
 MAKE=make
-#AR=ar cr
-AR=ar crv
+AR=ar cr
+#AR=ar crv
 RM=-rm -rf
 CFLAGS +=-Wall -g #-Werror -O3  	#将-Werror将告警当作错误处理
 

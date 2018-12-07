@@ -943,7 +943,7 @@ INT32  RCT_TaskArrayBizMsgHandlerRegister(ULONG ulRctType,ULONG ulRctSubType,   
     修改内容   : 新生成函数
 
 *****************************************************************************/
-LONG RCT_TaskArryBizMsgHandlerRunCall(RCT_MQUENODE_S *pstMessage)
+LONG RCT_TaskArrayBizMsgHandlerRunCall(RCT_MQUENODE_S *pstMessage)
 {
     if ( NULL == pstMessage )
     {

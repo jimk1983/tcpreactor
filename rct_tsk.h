@@ -113,7 +113,7 @@ INT32   RCT_TaskArrayBizMsgHandlerRegister(ULONG ulRctType,ULONG ulRctSubType, C
 
 INT32   RCT_TaskArrayBizMsgHandlerUnRegister(ULONG ulRctType, ULONG ulRctSubType);
 
-LONG    RCT_TaskArryBizMsgHandlerRunCall(RCT_MQUENODE_S *pstMessage);
+LONG    RCT_TaskArrayBizMsgHandlerRunCall(RCT_MQUENODE_S *pstMessage);
     
 
 /************************************************************************************/
