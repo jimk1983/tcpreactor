@@ -16,6 +16,10 @@
     修改内容   : 创建文件
 
 ******************************************************************************/
+        
+#ifdef __cplusplus
+    extern "C" {
+#endif
 
 INT32   RCT_API_EnvInit();
 
@@ -106,5 +110,9 @@ INT32 RCT_API_TimerOpsEventRegister(RCT_TIMEROPT_EVENT_S *pstTimerOps,
 
 INT32 RCT_API_TimerOpsEventUnRegister(RCT_TIMEROPT_EVENT_S *pstTimerOps);
 
+    
+#ifdef __cplusplus
+        }
+#endif
 
 
